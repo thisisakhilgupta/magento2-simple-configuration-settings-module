@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Akhil Gupta
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL)
+ * This is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/OSL-3.0  Open Software License (OSL)
+ *
+ * DISCLAIMER**
+ *
+ * @category   MAGENTO2 Simple CONFIGURATION MODULE
+ * @package    MAGENTO2 Simple CONFIGURATION MODULE
+ * @url       https://www.youtube.com/user/thisisakhilgupta/
+ * @author    Akhil Gupta
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="akhil_tab" translate="label" sortOrder="10">
+            <label>My Custom Tab</label>
+        </tab>
+        <section id="my_section" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>My Section</label>
+            <tab>akhil_tab</tab>
+            <resource>Akhil_Configuration::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="custom_dropdown" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>My Custom Drop down </label>
+                    <source_model>Akhil\Configuration\Model\Config\Source\Customvalue</source_model>
+                </field>
+                <field id="depends_dropdown" translate="label" type="text" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Visible for element 2 only</label>
+                    <depends>
+                        <field id="*/*/custom_dropdown">1</field>
+                    </depends>
+                    <validate>validate-no-empty</validate>
+                </field>
+
+                <field id="custom_text" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>My Custom Text</label>
+                </field>
+                <field id="custom_img" translate="label" type="image" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Image</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">custom_img</upload_dir>
+                    <base_url type="media" scope_info="1">custom_img</base_url>
+                    <comment><![CDATA[Allowed file types: jpeg, gif, png.]]></comment>
+                </field>
+                <field id="custom_textarea" translate="label" type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>My Textarea</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

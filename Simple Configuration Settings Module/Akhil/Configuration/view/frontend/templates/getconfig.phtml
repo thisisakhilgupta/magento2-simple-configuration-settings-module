@@ -1,0 +1,33 @@
+<!--
+/**
+ * Akhil Gupta
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL)
+ * This is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/OSL-3.0  Open Software License (OSL)
+ *
+ * DISCLAIMER**
+ *
+ * @category   MAGENTO2 Simple CONFIGURATION MODULE
+ * @package    MAGENTO2 Simple CONFIGURATION MODULE
+ * @url       https://www.youtube.com/user/thisisakhilgupta/
+ * @author    Akhil Gupta
+ */
+-->
+
+<?php
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$currentStore = $storeManager->getStore();
+
+$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);?>
+
+//Above code to get media URL in Magento 2
+
+<h1>Configuration Values:</h1>
+
+<h1><?php echo $this->getTextValue(); ?></h1>
+
+<img src="<?php echo $mediaUrl.'/custom_img/'.$this->getImageValue(); ?>" />
